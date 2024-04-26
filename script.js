@@ -3,6 +3,21 @@ const input = document.getElementById('city-input');
 const cityName = document.getElementById('city-name');
 const cityTime = document.getElementById('city-time');
 const cityTemp = document.getElementById('city-temp');
+const location_button = document.getElementById('get-location-button');
+
+
+// got location
+function gotLocation(position){
+    console.log(position)
+}
+
+function failedToget(){
+    console.log('there was some issue');
+}
+// location get
+location_button.addEventListener('click', async () =>{
+    const result = navigator.geolocation.getCurrentPosition(gotLocation, failedToget)
+});
 
 async function getData(cityName){
     const promise = await 
