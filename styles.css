@@ -50,3 +50,7 @@ body {
   font-size: 16px;
   margin-bottom: 10px;
 }
+
+#location-conatiner {
+  text-align: center;
+}

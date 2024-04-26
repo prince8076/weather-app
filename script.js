@@ -8,15 +8,13 @@ const location_button = document.getElementById('get-location-button');
 
 // got location
 async function gotLocation(position){
-    const result = await getDataa(
+    const results = await getDataa(
         position.coords.latitude,
         position.coords.longitude
     );
-    cityName.innerText=`${result.location.name}, ${result.location.region}, ${result.location.country}`;
-    cityTime.innerText= result.current.condition.text;
-    cityTemp.innerText = `${result.current.temp_c} °C`;
-
-    console.log(result)
+    cityName.innerText=`${results.location.name}, ${results.location.region}, ${results.location.country}`;
+    cityTime.innerText= results.current.condition.text;
+    cityTemp.innerText = `${results.current.temp_c} °C`;
 }
 
 function failedToget(){
@@ -28,7 +26,7 @@ location_button.addEventListener('click', async () =>{
   
 });
 
-const flag=false
+
 
 async function getDataa(lat,long){
 const promise = await 
@@ -39,7 +37,6 @@ return await promise.json()
 async function getData(cityName){
     const promise = await 
     fetch(`http://api.weatherapi.com/v1/current.json?key=cdf656eda3994a29b7391348242304&q=${cityName}&aqi=yes`);
-    flag = true
     return await promise.json()
 }
 
